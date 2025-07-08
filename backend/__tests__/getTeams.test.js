@@ -13,15 +13,20 @@ const wrongTeamList2Result = [['Arsenal','Liverpool'],['Arsenal','Liverpool'],
 ['Liverpool','Arsenal'],['Liverpool',"Chelsea"]]
 
 describe('runs getTeams', () => {
+ 
     test('should return a permutation of 2 teams', () => { 
         expect(getTeams(teamList1)).toBe(teamList1Result)
         expect(getTeams(teamList1)).not.toBe(wrongTeamList1Result)
-        
     })
 
     test('should return a permutation of 3 teams', () => {
         expect(getTeams(teamList2)).toBe(teamList2Result)
         expect(getTeams(teamList2)).not.toBe(wrongTeamList2Result)
+    })
+
+    test('should return an empty list', () => {
+        expect(getTeams([])).toBe([])
+        expect(getTeams(['Arsenal'])).toBe([])
     })
  
 })
