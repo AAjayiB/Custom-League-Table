@@ -1,6 +1,7 @@
 import express from 'express'
 import axios from 'axios'
-import { getTeams } from './getTeamPairs.js'
+// import { getTeamsPairs } from './getTeamPairs.js'
+
 
 // export const teams = ['Arsenal', 'Chelsea', 'Liverpool']
 
@@ -16,8 +17,15 @@ import { getTeams } from './getTeamPairs.js'
 
 const app = express()
 
-app.get('/', (req,res) => {
-    res.send('Home page')
+app.use(express.json())
+
+app.get('/', (req,res) => { 
+    // const teamData = axios.get(`https://www.thesportsdb.com/api/v1/json/123/searchevents.php?s=2024-2025&e=${req.params.teams[0][0]}_vs_${req.params.teams[0][1]}`)
+    // res.json(teamData.data)
+    const teamList = req.query.teams.split(',')
+    console.log(teamList)
+    res.json({Teams: teamList})
+
 })
 
 app.listen(5000, () => {
