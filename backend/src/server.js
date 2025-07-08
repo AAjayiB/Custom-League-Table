@@ -2,14 +2,24 @@ import express from 'express'
 import axios from 'axios'
 import { getTeams } from './getTeams.js'
 
-export const teams = ['Arsenal', 'Chelsea', 'Liverpool']
+// export const teams = ['Arsenal', 'Chelsea', 'Liverpool']
 
-const getData = async () => {
-    const res = await axios.get('https://www.thesportsdb.com/api/v1/json/123/searchevents.php?e=Arsenal_vs_Chelsea&s=2016-2017')
+// const getData = async () => {
+//     const res = await axios.get('https://www.thesportsdb.com/api/v1/json/123/searchevents.php?e=Arsenal_vs_Chelsea&s=2016-2017')
     
-    console.log(res.data)
-}
+//     console.log(res.data)
+// }
 
-// getData()
+// // getData()
 
-getTeams(teams)
+// getTeams(teams)
+
+const app = express()
+
+app.get('/', (req,res) => {
+    res.send('Home page')
+})
+
+app.listen(5000, () => {
+    console.log('Listening at PORT 5000')
+})
