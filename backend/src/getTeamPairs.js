@@ -1,4 +1,4 @@
-export const getTeams = (teamList) => {
+export const getTeamPairs = (teamList) => {
     const teamPairs = []
     if(teamList.length > 1){
         teamList.forEach(team => {

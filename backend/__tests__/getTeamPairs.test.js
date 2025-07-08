@@ -1,4 +1,4 @@
-import { getTeams } from "../src/getTeams";
+import { getTeamPairs } from "../src/getTeamPairs";
 
 
 const teamList1 = ['Arsenal', 'Chelsea'];
@@ -12,21 +12,21 @@ const wrongTeamList2Result = [['Arsenal','Liverpool'],['Arsenal','Liverpool'],
 ["Chelsea",'Arsenal'],['Chelsea','Liverpool'],
 ['Liverpool','Arsenal'],['Liverpool',"Chelsea"]]
 
-describe('runs getTeams', () => {
+describe('runs getTeamPairs', () => {
  
     test('should return a permutation of 2 teams', () => { 
-        expect(getTeams(teamList1)).toStrictEqual(teamList1Result)
-        expect(getTeams(teamList1)).not.toStrictEqual(wrongTeamList1Result)
+        expect(getTeamPairs(teamList1)).toStrictEqual(teamList1Result)
+        expect(getTeamPairs(teamList1)).not.toStrictEqual(wrongTeamList1Result)
     })
 
     test('should return a permutation of 3 teams', () => {
-        expect(getTeams(teamList2)).toStrictEqual(teamList2Result)
-        expect(getTeams(teamList2)).not.toStrictEqual(wrongTeamList2Result)
+        expect(getTeamPairs(teamList2)).toStrictEqual(teamList2Result)
+        expect(getTeamPairs(teamList2)).not.toStrictEqual(wrongTeamList2Result)
     })
 
     test('should return an empty list', () => {
-        expect(getTeams([])).toStrictEqual([])
-        expect(getTeams(['Arsenal'])).toStrictEqual([])
+        expect(getTeamPairs([])).toStrictEqual([])
+        expect(getTeamPairs(['Arsenal'])).toStrictEqual([])
     })
  
 })

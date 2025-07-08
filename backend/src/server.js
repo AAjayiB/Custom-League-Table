@@ -1,6 +1,6 @@
 import express from 'express'
 import axios from 'axios'
-import { getTeams } from './getTeams.js'
+import { getTeams } from './getTeamPairs.js'
 
 // export const teams = ['Arsenal', 'Chelsea', 'Liverpool']
 
