@@ -1,6 +1,7 @@
 import express from 'express'
 import axios from 'axios'
 import { getTeamPairs } from './getTeamPairs.js'
+import { extractData } from './extractData.js'
 
 
 // export const teams = ['Arsenal', 'Chelsea', 'Liverpool']
@@ -21,28 +22,21 @@ app.use(express.json())
 
 
 
-app.get('/',async (req,res) => { 
-    // res.json(teamData.data)
-    const teamList = req.query.teams.split(',')
+app.get('/', (req,res) => { 
     
-    const matches = []
-    const pair = getTeamPairs(teamList)
-    // teamPairs.forEach(async (pair) => {
-    //     const teamData = await axios.get(
-    //         `https://www.thesportsdb.com/api/v1/json/123/searchevents.php?s=2024-2025&e=${pair[0]}_vs_${pair[1]}`)
-    // })
-    const teamData = await axios.get(
-            `https://www.thesportsdb.com/api/v1/json/123/searchevents.php?s=2024-2025&e=${pair[0][0]}_vs_${pair[0][1]}`)
-    teamData.data.event.filter(e =>e.strLeague =="English Premier League")
-        .forEach(matchData => {
-        const resultData ={
-            homeTeam:matchData.strHomeTeam,
-            awayTeam:matchData.strAwayTeam,
-            homeScore:matchData.intHomeScore,
-            awayScore:matchData.intAwayScore
-        }
-        matches.push(resultData)
-    });
+    let matches = []
+    const teamList = req.query.teams.split(',')
+    const teamPairs = getTeamPairs(teamList)
+    teamPairs.forEach(async (pair) => {
+        const teamData = await axios.get(
+            `https://www.thesportsdb.com/api/v1/json/123/searchevents.php?s=2024-2025&e=${pair[0]}_vs_${pair[1]}`)
+        matches = extractData(teamData.data)
+        res.sendStatus(200).json(matches)
+    })
+    
+    // const teamData = await axios.get(
+    //         `https://www.thesportsdb.com/api/v1/json/123/searchevents.php?s=2024-2025&e=${pair[0][0]}_vs_${pair[0][1]}`)
+    
     
     console.log(matches)
     res.json(matches)
@@ -52,3 +46,5 @@ app.get('/',async (req,res) => {
 app.listen(5000, () => {
     console.log('Listening at PORT 5000')
 })
+
+
