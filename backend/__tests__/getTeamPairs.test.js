@@ -1,16 +1,6 @@
 import { getTeamPairs } from "../src/getTeamPairs";
+import { teamList1, teamList1Result, wrongTeamList1Result, teamList2, teamList2Result, wrongTeamList2Result } from "./teamListData";
 
-
-const teamList1 = ['Arsenal', 'Chelsea'];
-const teamList1Result = [['Arsenal','Chelsea'],["Chelsea",'Arsenal']]
-const wrongTeamList1Result = [['Arsenal','Chelsea'],["Chlsea",'rsenal']]
-const teamList2 = ['Arsenal', 'Chelsea','Liverpool'];
-const teamList2Result = [['Arsenal','Chelsea'],['Arsenal','Liverpool'],
-["Chelsea",'Arsenal'],['Chelsea','Liverpool'],
-['Liverpool','Arsenal'],['Liverpool',"Chelsea"]]
-const wrongTeamList2Result = [['Arsenal','Liverpool'],['Arsenal','Liverpool'],
-["Chelsea",'Arsenal'],['Chelsea','Liverpool'],
-['Liverpool','Arsenal'],['Liverpool',"Chelsea"]]
 
 describe('runs getTeamPairs', () => {
  
