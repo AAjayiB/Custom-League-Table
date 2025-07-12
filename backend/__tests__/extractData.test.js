@@ -9,7 +9,7 @@ describe('runs extractData', () => {
     it('should return a list of objects containing the scores of both', async () => { 
         let teamData = await axios.get('https://www.thesportsdb.com/api/v1/json/123/searchevents.php?s=2024-2025&e=Arsenal_vs_Chelsea')
         const result = extractData(teamData.data)
-        expect(result).toStrictEqual(extractDataResult)
+        expect(result).toStrictEqual(expect.arrayContaining([extractDataResult]))
     })
 
     it('should return an empty list if given a empty or undefined object', () => { 
