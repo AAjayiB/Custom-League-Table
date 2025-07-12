@@ -4,11 +4,8 @@ export const getTeamPairs = (teamList) => {
         teamList.forEach(team => {
             const filtered = teamList.filter(fTeamList => team != fTeamList);
             filtered.forEach(team2 => {
-                
                 teamPairs.push([team,team2])
-                console.log(teamPairs)
             });
-
         });
     }
     return teamPairs
