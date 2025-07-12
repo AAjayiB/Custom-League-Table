@@ -1,5 +1,5 @@
 import { getTeamPairs } from "../src/getTeamPairs";
-import { teamList1, teamList1Result, wrongTeamList1Result, teamList2, teamList2Result, wrongTeamList2Result } from "./teamListData";
+import { teamList1, teamList1Result, wrongTeamList1Result, teamList2, teamList2Result, wrongTeamList2Result } from "../src/teamListData";
 
 
 describe('runs getTeamPairs', () => {
