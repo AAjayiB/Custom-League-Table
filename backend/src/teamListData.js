@@ -9,9 +9,9 @@ export const wrongTeamList2Result = [['Arsenal', 'Liverpool'], ['Arsenal', 'Live
 ["Chelsea", 'Arsenal'], ['Chelsea', 'Liverpool'],
 ['Liverpool', 'Arsenal'], ['Liverpool', "Chelsea"]];
 
-export const extractDataResult = [{
+export const extractDataResult = {
     homeTeam: 'Arsenal',
     awayTeam: 'Chelsea',
     homeScore: 1,
     awayScore: 0
-}]
+}
