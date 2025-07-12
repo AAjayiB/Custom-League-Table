@@ -7,8 +7,8 @@ export const extractData = (teamData) => {
             const resultData = {
                 homeTeam: matchData.strHomeTeam,
                 awayTeam: matchData.strAwayTeam,
-                homeScore: matchData.intHomeScore,
-                awayScore: matchData.intAwayScore
+                homeScore: parseInt(matchData.intHomeScore),
+                awayScore: parseInt(matchData.intAwayScore)
             };
             matches.push(resultData);
         });
