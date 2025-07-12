@@ -1,7 +1,8 @@
 
 export const extractData = (teamData) => {
     const matches = [];
-    teamData.event.filter(e => e.strLeague == "English Premier League")
+    if (teamData?.event){
+        teamData.event.filter(e => e.strLeague == "English Premier League")
         .forEach(matchData => {
             const resultData = {
                 homeTeam: matchData.strHomeTeam,
@@ -11,5 +12,6 @@ export const extractData = (teamData) => {
             };
             matches.push(resultData);
         });
+    }
     return matches;
 };
