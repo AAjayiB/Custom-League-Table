@@ -14,9 +14,3 @@ export const extractDataResult = {
     homeScore: 1,
     awayScore: 0
 }
-
-export const extractDataResult2 = {
-    awayTeam: 'Liverpool',
-    homeScore: 2,
-    awayScore: 2
-}
