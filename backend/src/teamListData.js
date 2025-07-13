@@ -10,14 +10,12 @@ export const wrongTeamList2Result = [['Arsenal', 'Liverpool'], ['Arsenal', 'Live
 ['Liverpool', 'Arsenal'], ['Liverpool', "Chelsea"]];
 
 export const extractDataResult = {
-    homeTeam: 'Arsenal',
     awayTeam: 'Chelsea',
     homeScore: 1,
     awayScore: 0
 }
 
 export const extractDataResult2 = {
-    homeTeam: 'Arsenal',
     awayTeam: 'Liverpool',
     homeScore: 2,
     awayScore: 2
