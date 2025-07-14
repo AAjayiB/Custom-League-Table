@@ -3,7 +3,7 @@ import LeagueTableSlot from './LeagueTableSlot'
 
 const LeagueTable = ({teams}) => {
   return (
-    <div className='overflow-x-auto rounded-box  size-200'>
+    <div className='overflow-x-auto rounded-box py-10'>
         <table className='table table-zebra'>
             <thead className='bg-black'>
                 <tr>
