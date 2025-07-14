@@ -5,12 +5,12 @@ import Home from './pages/Home'
 import Result from './pages/Result'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [matchData, setMatchData] = useState({})
 
   return (
     <Routes>
-      <Route path='/' element={<Home />} />
-      <Route path='/results' element={<Result />} />
+      <Route path='/' element={<Home matchData={matchData} setMatchData={setMatchData} />} />
+      <Route path='/results' element={<Result matchData={matchData}/>} />
     </Routes>
   )
 }
