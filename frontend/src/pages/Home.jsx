@@ -1,11 +1,21 @@
 import React from 'react'
 import LeagueTable from '../components/LeagueTable'
+import Header from '../components/Header'
+import TeamForm from '../components/TeamForm'
 
-const teams = ['Arsenal','Chelsea','Liverpool']
-const Home = () => {
+
+const Home = ({matchData, setMatchData}) => {
   return (
     <>
-      <LeagueTable teams={teams} />
+        {/* <Header />  */}
+        <form >
+          <TeamForm />
+          {/* <TeamForm />
+          <TeamForm />
+          <TeamForm />
+          <TeamForm />
+          <TeamForm /> */}
+        </form>
     </>
   )
 }

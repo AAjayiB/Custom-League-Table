@@ -1,8 +1,15 @@
 import React from 'react'
+import LeagueTable from '../components/LeagueTable'
+import Header from '../components/Header'
 
-const Result = () => {
+const Result = ({matchData}) => {
+
+  const teams = ['Arsenal','Chelsea','Liverpool']
   return (
-    <div>Result</div>
+    <>
+    <Header />
+      <LeagueTable teams={teams} />
+    </>
   )
 }
 
