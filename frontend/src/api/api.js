@@ -1,10 +1,8 @@
 import axios from 'axios'
 
 
-const getMatchData = async(params) => {
-    axios.create({
-        method: 'GET',
-        baseURL: 'http://localhost:5000',
+export const getMatchData = async(params) => {
+    const data = await axios.get('http://localhost:5000',{
         params: {
             t1:params.t1,
             t2:params.t2,
@@ -14,4 +12,7 @@ const getMatchData = async(params) => {
             t6:params.t6
         }
     })
+
+    return data.data
+    
 }
