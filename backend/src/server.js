@@ -1,10 +1,16 @@
 import express from 'express'
 import axios from 'axios'
+import cors from 'cors'
 import { getTeamPairs } from './getTeamPairs.js'
 import { extractData } from './extractData.js'
 
 const app = express()
 
+const corsOptions = {
+    origin: 'http://localhost:5173',
+    methods: 'GET'
+}
+app.use(cors(corsOptions))
 app.use(express.json())
 
 app.get('/', async (req,res) => { 
