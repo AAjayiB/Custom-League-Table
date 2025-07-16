@@ -2,15 +2,16 @@ import React from 'react'
 import { CLUBS } from '../assets/Clubs24-25'
 const TeamForm = ({id, matchParameters, setMatchParameters}) => {
   return (
-    
-    <select defaultValue="Pick a color" className="select" id={id} name={id} 
-    onChange={(e) => setMatchParameters({...matchParameters, [id]: e.target.value })}>
-        <option disabled={true}>Pick a color</option>
-        {CLUBS.map(club => (
-            <option> {club} </option>
+    <label className='label'>{id.toUpperCase()}: 
+    <select defaultValue="Select a Team"  id={id} name={id} 
+    onChange={(e) => setMatchParameters({...matchParameters, [id]: e.target.value })}
+    className="select">
+        <option disabled={true}>Select a Team</option>
+        {CLUBS.map((club,index) => (
+            <option value={club} key={index}>{club} </option>
         ))}
     </select>
-    
+    </label>
   )
 }
 

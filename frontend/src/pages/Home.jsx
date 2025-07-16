@@ -3,7 +3,9 @@ import LeagueTable from '../components/LeagueTable'
 import Header from '../components/Header'
 import TeamForm from '../components/TeamForm'
 import {useQuery} from '@tanstack/react-query'
-import { useNavigate } from 'react-router'
+import { Form, useNavigate } from 'react-router'
+import { getMatchData } from '../api/api'
+
 
 const Home = ({matchData, setMatchData}) => {
 
@@ -16,25 +18,31 @@ const Home = ({matchData, setMatchData}) => {
     t6:''
   })
   
-  const handleSubmit = (e) => {
+  const navigate = useNavigate()
+
+  const handleSubmit = async(e) => {
     e.preventDefault()
-    // navigate('/results')
-    console.log(matchParameters)
+    const data = await getMatchData(matchParameters)
+    setMatchData(data)
+    console.log(matchData)
+    navigate('/results')
+    
   }
  
-  const navigate = useNavigate()
   return (
     <>
         {/* <Header />  */}
-        <form >
-          <TeamForm id={'t1'} matchParameters={matchParameters} setMatchParameters={setMatchParameters}/>
-          <TeamForm id={'t2'} matchParameters={matchParameters} setMatchParameters={setMatchParameters}/>
-          <TeamForm id={'t3'} matchParameters={matchParameters} setMatchParameters={setMatchParameters}/>
-          <TeamForm id={'t4'} matchParameters={matchParameters} setMatchParameters={setMatchParameters}/>
-          <TeamForm id={'t5'} matchParameters={matchParameters} setMatchParameters={setMatchParameters}/>
-          <TeamForm id={'t6'} matchParameters={matchParameters} setMatchParameters={setMatchParameters}/> 
-          <button type='submit' className='btn btn-active' onClick={handleSubmit}>Create Table</button>
-        </form>
+        <div className=''>
+          <form method='get' >
+            <TeamForm id={'t1'} matchParameters={matchParameters} setMatchParameters={setMatchParameters}/>
+            <TeamForm id={'t2'} matchParameters={matchParameters} setMatchParameters={setMatchParameters}/>
+            <TeamForm id={'t3'} matchParameters={matchParameters} setMatchParameters={setMatchParameters}/>
+            <TeamForm id={'t4'} matchParameters={matchParameters} setMatchParameters={setMatchParameters}/>
+            <TeamForm id={'t5'} matchParameters={matchParameters} setMatchParameters={setMatchParameters}/>
+            <TeamForm id={'t6'} matchParameters={matchParameters} setMatchParameters={setMatchParameters}/> 
+            {/* <button type='submit' className='btn btn-active' onClick={handleSubmit}>Create Table</button> */}
+          </form>
+        </div>
     </>
   )
 }
