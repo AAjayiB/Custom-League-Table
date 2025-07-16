@@ -12,7 +12,7 @@ export const getMatchData = async(params) => {
             t6:params.t6
         }
     })
-
+    // if data isn't showning up for no particular reasoning add conditional chaining (?.)
     return data.data
     
 }
