@@ -3,6 +3,7 @@ import axios from 'axios'
 import cors from 'cors'
 import { getTeamPairs } from './getTeamPairs.js'
 import { extractData } from './extractData.js'
+import { processData } from './processData.js'
 
 const app = express()
 
@@ -21,8 +22,8 @@ app.get('/', async (req,res) => {
         // to increase max teams add extra query parameter
         const queryTeams = [req.query.t1,req.query.t2,req.query.t3,req.query.t4,req.query.t5,req.query.t6]
 
-        // remove undefined team parameters
-        const teamList= queryTeams.filter(team => team)
+        // remove undefined team parameters and duplicates
+        const teamList= queryTeams.filter((team , index, array) => team && array.indexOf(team) === index)
 
         //create the object returned and use the valid team parameters as keys
         const matchData = {}
@@ -46,11 +47,16 @@ app.get('/', async (req,res) => {
         // accept the list of promises
         await Promise.all(matchDataPromises)
        
+
+        //// Process here!!! 
+        const results = processData(matchData)
         // send the match data
-        res.status(200).json(matchData)
+        return res.status(200).json(results)
     } catch (error) {
-        console.log('Error getting data\n(ERROR):',error)
-        res.sendStatus(500)
+        
+        if(error.status === 429) return res.status(429).json({status:'Failed',code:error.status,message:'Too many requests right now. Please try again after 1 minute'})
+        else return res.status(500).json({status:'Failed', code:error.status, message:error.message})
+        
     }
     
 })
