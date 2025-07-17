@@ -53,6 +53,17 @@ export const processDataResult2 = [
     goalDiff: 1
     },
     {
+    team: 'Liverpool',
+    matchesPlayed: 4,
+    wins: 1,
+    draws: 2,
+    losses: 1,
+    points: 5,
+    goalFor: 7,
+    goalAgainst: 8,
+    goalDiff: -1
+    },
+    {
     team:'Chelsea',
     matchesPlayed: 4,
     wins: 1,
@@ -62,17 +73,7 @@ export const processDataResult2 = [
     goalFor: 6,
     goalAgainst: 5,
     goalDiff: 1
-    },
-    {
-    team: 'Liverpool',
-    matchesPlayed: 4,
-    wins: 1,
-    draws: 2,
-    losses: 1,
-    points: 4,
-    goalFor: 7,
-    goalAgainst: 8,
-    goalDiff: -1
     }
+    
 ]
 
