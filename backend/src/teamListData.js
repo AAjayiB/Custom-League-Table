@@ -70,9 +70,9 @@ export const processDataResult2 = [
     draws: 1,
     losses: 2,
     points: 4,
-    goalFor: 6,
+    goalFor: 5,
     goalAgainst: 5,
-    goalDiff: 1
+    goalDiff: 0
     }
     
 ]
