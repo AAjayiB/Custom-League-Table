@@ -2,9 +2,9 @@ import React from 'react'
 import LeagueTable from '../components/LeagueTable'
 import Header from '../components/Header'
 
-const Result = ({matchData}) => {
+const Result = ({teams}) => {
 
-  const teams = ['Arsenal','Chelsea','Liverpool']
+  
   return (
     <>
     <Header />

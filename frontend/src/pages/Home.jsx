@@ -1,34 +1,29 @@
 import React, { useState } from 'react'
-import LeagueTable from '../components/LeagueTable'
-import Header from '../components/Header'
 import TeamForm from '../components/TeamForm'
-import {useQuery} from '@tanstack/react-query'
-import { Form, useNavigate } from 'react-router'
-import { getMatchData } from '../api/api'
+import { useNavigate } from 'react-router'
 
 
-const Home = ({matchData, setMatchData}) => {
-
+const Home = ({teams, setTeams}) => {
   const [matchParameters, setMatchParameters] = useState({
     t1:'',
     t2:'',
     t3:'',
     t4:'',
     t5:'',
-    t6:''
+    t6:'',
   })
   
   const navigate = useNavigate()
-
-  const handleSubmit = async(e) => {
-    e.preventDefault()
-    const data = await getMatchData(matchParameters)
-    setMatchData(data)
-    console.log(matchData)
-    navigate('/results')
-    
-  }
  
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setTeams(matchParameters)
+    console.log(teams)
+    navigate('/results')
+  }
+
+  
+  
   return (
     <>
         {/* <Header />  */}
@@ -40,7 +35,7 @@ const Home = ({matchData, setMatchData}) => {
             <TeamForm id={'t4'} matchParameters={matchParameters} setMatchParameters={setMatchParameters}/>
             <TeamForm id={'t5'} matchParameters={matchParameters} setMatchParameters={setMatchParameters}/>
             <TeamForm id={'t6'} matchParameters={matchParameters} setMatchParameters={setMatchParameters}/> 
-            {/* <button type='submit' className='btn btn-active' onClick={handleSubmit}>Create Table</button> */}
+            <button type='submit' className='btn btn-active' onClick={handleSubmit} disabled={!(matchParameters.t1 && matchParameters.t2) || matchParameters.t1 ==matchParameters.t2 }>Create Table</button>
           </form>
         </div>
     </>
