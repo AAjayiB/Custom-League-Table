@@ -15,7 +15,7 @@ export const extractDataResult = {
     awayScore: 0
 }
 
-export const processDataResult = [
+export const processDataResult1 = [
     {
     team:'Arsenal',
     matchesPlayed: 2,
@@ -23,9 +23,9 @@ export const processDataResult = [
     draws: 1,
     losses: 0,
     points: 4,
-    goalFor: 7,
-    goalAgainst: 2,
-    goalDiff: 5
+    goalFor: 2,
+    goalAgainst: 1,
+    goalDiff: 1
     },
     {
     team:'Chelsea',
@@ -34,8 +34,8 @@ export const processDataResult = [
     draws: 1,
     losses: 1,
     points: 1,
-    goalFor: 2,
-    goalAgainst: 7,
-    goalDiff: -5
+    goalFor: 1,
+    goalAgainst: 2,
+    goalDiff: -1
     }
 ]
