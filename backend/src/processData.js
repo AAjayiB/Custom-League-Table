@@ -1,5 +1,6 @@
 export const processData = (extractedData) => {
     if(extractedData){
+        console.log(extractedData)
         const teamKeys = Object.keys(extractedData)
         function resultModel(team){this.team = team, this.matchesPlayed=0, this.wins=0, this.draws=0, 
             this.losses=0, this.points=0, this.goalFor=0, this.goalAgainst=0, this.goalDiff=0
@@ -20,14 +21,14 @@ export const processData = (extractedData) => {
             // console.log(resultObject)
             return resultObject
             
-            },  new resultModel(key,0,0,0,0,0,0,0,0))
+            },  new resultModel(key.replace('_'," "),0,0,0,0,0,0,0,0))
             // console.log(homeGames)
             //
             // FINISH THE REST OF THE UPDATE CODE FOR AWAY GAMES THEN CALCULATE THE DERIVED VALUES (POINTS AND GOALDIFF)
             
             const teamKeys2 = teamKeys.filter((teamKeys2) => key != teamKeys2)
             teamKeys2.forEach(key2 => extractedData[key2]
-            .filter(awayGames => awayGames.awayTeam == key)
+            .filter(awayGames => awayGames.awayTeam == key.replace('_'," "))
             .reduce((resultObject,gameData) =>{
                 // console.log(resultObject)
                 resultObject =  {...resultObject, 
@@ -43,6 +44,7 @@ export const processData = (extractedData) => {
             allGames = resultObject
             },allGames))
             allGames = {...allGames, points: (3*allGames.wins)+allGames.draws, goalDiff: allGames.goalFor-allGames.goalAgainst}
+            // console.log(allGames)
             result.push(allGames)
         })
         // console.log(result)
