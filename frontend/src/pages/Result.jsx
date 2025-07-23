@@ -26,9 +26,9 @@ const Result = ({teams}) => {
   
   return (
     <>
-    {/* <Header />
-      <LeagueTable teams={teams} /> */}
-      <div>{JSON.stringify(data)}</div>
+    {/* <Header /> */}
+      <LeagueTable teams={data} />
+      {/* <div>{JSON.stringify(data)}</div> */}
     </>
   )
 }

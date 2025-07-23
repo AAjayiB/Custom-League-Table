@@ -41,8 +41,8 @@ const LeagueTable = ({teams}) => {
             </thead>
            
             <tbody>
-                {teams.map(() => (
-                   <LeagueTableSlot />
+                {teams.map((team,index) => (
+                   <LeagueTableSlot index={index} team={team}/>
                 ))}
             </tbody>
         </table>
