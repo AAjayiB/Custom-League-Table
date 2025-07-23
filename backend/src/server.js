@@ -53,7 +53,7 @@ app.get('/', async (req,res) => {
         // send the match data
         return res.status(200).json(results)
     } catch (error) {
-        
+        console.log(error.message)
         if(error.status === 429) return res.status(429).json({status:'Failed',code:error.status,message:'Too many requests right now. Please try again after 1 minute'})
         else return res.status(500).json({status:'Failed', code:error.status, message:error.message})
         
