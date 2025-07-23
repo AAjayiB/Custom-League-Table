@@ -3,7 +3,7 @@ export const CLUBS = [
     "Aston_Villa",
     "Bournemouth",
     "Brentford",
-    "Brighton",
+    "Brighton_and_Hove_Albion",
     "Chelsea",
     "Crystal_Palace",
     "Everton",
