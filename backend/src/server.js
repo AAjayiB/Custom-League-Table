@@ -40,7 +40,7 @@ app.get('/', async (req,res) => {
             const teamData = await axios.get(
                 `https://www.thesportsdb.com/api/v1/json/123/searchevents.php?s=2024-2025&e=${pair[0]}_vs_${pair[1]}`)
             
-            const extractedData = extractData(teamData.data)
+            const extractedData = extractData(teamData.data,pair[1])
             matchData[pair[0]].push(extractedData)
         })
 
