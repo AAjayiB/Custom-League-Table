@@ -4,7 +4,7 @@ export const processData = (extractedData) => {
 
         // Creates a list from the keys in the data
         const teamKeys = Object.keys(extractedData)
-        
+
         // User-defined object the results will be stored in
         function resultModel(team){this.team = team, this.matchesPlayed=0, this.wins=0, this.draws=0, 
             this.losses=0, this.points=0, this.goalFor=0, this.goalAgainst=0, this.goalDiff=0
@@ -13,7 +13,9 @@ export const processData = (extractedData) => {
 
         teamKeys.forEach((key) =>{
             // computes all the data for a team's home games
-            let allGames = extractedData[key].reduce((resultObject,gameData) => {
+            let allGames = extractedData[key]
+            .filter(existingHomeGames => existingHomeGames) // checks if the game exists (might not due to free api)
+            .reduce((resultObject,gameData) => {
                resultObject =  {...resultObject, 
                 matchesPlayed: resultObject.matchesPlayed + 1, 
                 goalFor: resultObject.goalFor + gameData.homeScore,
@@ -23,12 +25,13 @@ export const processData = (extractedData) => {
             else if(gameData.homeScore === gameData.awayScore) resultObject = {...resultObject, draws: resultObject.draws + 1}
             else resultObject = {...resultObject, losses: resultObject.losses + 1 }
             return resultObject
-            },  new resultModel(key.replace('_'," "),0,0,0,0,0,0,0,0))
+            },  new resultModel(key,0,0,0,0,0,0,0,0))
      
             // add the data for a team's away games to allGames to get data for both home and away games           
             const teamKeys2 = teamKeys.filter((teamKeys2) => key != teamKeys2)
             teamKeys2.forEach(key2 => extractedData[key2]
-            .filter(awayGames => awayGames.awayTeam == key.replace('_'," "))
+            .filter(definedAwayGames => definedAwayGames) // checks if the game exists (might not due to free api)
+            .filter(awayGames => awayGames.awayTeam == key)
             .reduce((resultObject,gameData) =>{
                 resultObject =  {...resultObject, 
                     matchesPlayed: resultObject.matchesPlayed + 1, 
@@ -48,6 +51,9 @@ export const processData = (extractedData) => {
             result.push(allGames)
         })
 
+        // removes underscores in final data
+        result.forEach(teamData => teamData.team.replace('_',' '))
+        
         // ranks the teams within the array  
         return result.sort(compareGoalFor).sort(compareGoalDiff).sort(comparePoints).reverse()
     }
