@@ -1,0 +1,10 @@
+tbody tr {
+  color: black;
+}
+
+tbody tr:nth-child(even) {
+  background: linear-gradient(to right, #fff 50%, #63e 100%);
+}
+tbody tr:nth-child(odd) {
+  background: linear-gradient(to left, #fff 50%, #63e 100%);
+}
