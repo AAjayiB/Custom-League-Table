@@ -1,8 +1,9 @@
 import React from "react";
-import LeagueTable from "../components/LeagueTable";
-import Header from "../components/Header";
 import { useQuery } from "@tanstack/react-query";
 import { getMatchData } from "../api/api";
+import LeagueTable from "../components/LeagueTable";
+import Header from "../components/Header";
+
 const Result = ({ teams }) => {
   // const getMatchData2 = getMatchData(teams)
 

@@ -1,6 +1,6 @@
 import React from "react";
-import LeagueTableSlot from "./LeagueTableSlot";
 import "../styles/LeagueTable.css";
+import LeagueTableSlot from "./LeagueTableSlot";
 
 const LeagueTable = ({ teams }) => {
   return (
